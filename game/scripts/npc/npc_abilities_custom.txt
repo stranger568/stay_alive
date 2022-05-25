@@ -1,0 +1,92 @@
+"DOTAAbilities"
+{
+	"ability_upgrade"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"functions/upgrade"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
+		"AbilityTextureName"			""
+		"AbilityCastPoint"				"0"
+		"MaxLevel"						"1"
+		"AbilityCooldown"				"1"
+	}
+
+	"ability_cancel"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"functions/cancel"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
+		"AbilityTextureName"			""
+		"AbilityCastPoint"				"0"
+		"MaxLevel"						"1"
+		"AbilityCooldown"				"1"
+	}
+
+	"ability_sell"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"functions/sell"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
+		"AbilityTextureName"			""
+		"AbilityCastPoint"				"0"
+		"MaxLevel"						"1"
+		"AbilityCooldown"				"1"
+	}
+
+	"build_wall"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"functions/build"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			""
+		"MaxLevel"						"1"
+		"AbilityCooldown"				"0"
+		"BuildingTime"					"1"
+		"UnitName"						"build_wall"
+		"AbilityGoldCost"				""
+		"AbilityCastRange"				"1000"
+
+		"AbilityValues"
+		{
+			"gold_cost_upgrade"					"5 10 15 20 25 30 35 40 45 50"
+			"max_upgrade_level"					"10"
+			"upgrade_health_per_level"			"200 400 600 800 1000 1200 1400 1600 1800 2000"
+			"upgrade_armor_per_level"			"1 1 1 1 1 1 1 1 1 2"
+			"upgrade_time_per_level"			"1 1 1 1 1 1 1 1 1 1"
+		}
+	}
+
+	"build_defend_tower"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"functions/build"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			""
+		"MaxLevel"						"1"
+		"AbilityCooldown"				"0"
+		"BuildingTime"					"10"
+		"UnitName"						"build_defend_tower"
+		"AbilityGoldCost"				""
+		"AbilityCastRange"				"1000"
+
+		"AbilityValues"
+		{
+			"gold_cost_upgrade"					"200 400 600 800 1000"
+			"max_upgrade_level"					"5"
+			"upgrade_health_per_level"			"100 200 300 400 500"
+			"upgrade_armor_per_level"			"1 1 1 1 1"
+			"upgrade_time_per_level"			"5 10 15 20 25"
+			"upgrade_damage_per_level"			"10 20 30 40 50"
+			"upgrade_range_per_level"			"800 850 900 950 1000"
+			"upgrade_attackspeed_per_level"		"0.3 0.3 0.3 0.3 0.3"
+		}
+	}
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+<root>
+	<script>
+		GameEvents.Subscribe("CreateIngameErrorMessage", function(data) 
+		{
+			GameEvents.SendEventClientSide("dota_hud_error_message", 
+			{
+				"splitscreenplayer": 0,
+				"reason": data.reason || 80,
+				"message": data.message
+			})
+		})
+	</script>
+	<Panel>
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/building_helper.xml" />
+	</Panel>
+</root>
