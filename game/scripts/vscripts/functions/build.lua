@@ -25,6 +25,8 @@ function build_wall:OnSpellStart()
 	buildinghelper:Start_Building(data)
 end
 
+-- При создании новой абилки на создание постройки копируешь эту хуйню и меняешь на название абилки
+
 build_defend_tower = class({})
 
 function build_defend_tower:Spawn()
@@ -47,6 +49,17 @@ function build_defend_tower:OnSpellStart()
 	data.callback_data = data
 	buildinghelper:Start_Building(data)
 end
+
+----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 function build_building_middle(argv, data)
 
