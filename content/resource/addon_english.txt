@@ -1,0 +1,36 @@
+"lang"
+{
+	"Language"		"English"
+	"Tokens"
+	{
+		"addon_game_name"			"STAY ALIVE"
+
+		"DOTA_Tooltip_ability_ability_upgrade"					"Улучшение"
+		"DOTA_Tooltip_ability_ability_upgrade_Description"		"Улучшает вашу залупу"
+		// "DOTA_Tooltip_ability_ability_upgrade_"					""
+		// "DOTA_Tooltip_ability_ability_upgrade_"					""
+
+		"DOTA_Tooltip_ability_ability_cancel"					"Отмена строительства"
+		"DOTA_Tooltip_ability_ability_cancel_Description"		"Отменяет строительство вашей залупы"
+		// "DOTA_Tooltip_ability_ability_cancel_"					""
+		// "DOTA_Tooltip_ability_ability_cancel_"					""
+
+		"DOTA_Tooltip_ability_ability_sell"					"Уничтожить"
+		"DOTA_Tooltip_ability_ability_sell_Description"		"Уничтожает вашу залупу"
+		// "DOTA_Tooltip_ability_ability_sell_"					""
+		// "DOTA_Tooltip_ability_ability_sell_"					""
+
+		"DOTA_Tooltip_ability_build_wall"					"Построить Стену"
+		"DOTA_Tooltip_ability_build_wall_Description"		"Строит стену на вашей залупе"
+		// "DOTA_Tooltip_ability_build_wall_"					""
+		// "DOTA_Tooltip_ability_build_wall_"					""
+
+		"DOTA_Tooltip_ability_build_defend_tower"					"Построить Башню"
+		"DOTA_Tooltip_ability_build_defend_tower_Description"		"Строит башню на вашей залупе"
+		// "DOTA_Tooltip_ability_build_defend_tower_"					""
+		// "DOTA_Tooltip_ability_build_defend_tower_"					""
+
+		"npc_dota_creature_build_wall"								"Стена"
+		"npc_dota_creature_build_defend_tower"						"Башня"
+	}
+}
