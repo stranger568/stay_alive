@@ -103,6 +103,13 @@ function ability_upgrade:OnChannelFinish(bInterrupted)
 		ability_value:SetHidden(true)
 	end
 
+	-- Установка новой модели
+
+	if abilKVs["model_level_"..level+1] ~= nil then
+		new_build:SetModel(abilKVs["model_level_"..level+1])
+		new_build:SetOriginalModel(abilKVs["model_level_"..level+1])
+	end
+
 	-- Установка новой цены постройки --
 
 	if abilKVs.AbilityValues.gold_cost_upgrade ~= nil then

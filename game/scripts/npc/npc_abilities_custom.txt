@@ -46,6 +46,17 @@
 		"AbilityGoldCost"				""
 		"AbilityCastRange"				"1000"
 
+		// Оригинальная первая модель берется из npc_units.txt а грейды сюда прописал
+		"model_level_2"					"models/items/earthshaker/totem_dragon_wall/fissure_head.vmdl"
+		"model_level_3"					"models/items/earthshaker/ti9_immortal/ti9_immortal_fissure.vmdl"
+		"model_level_4"					"models/props_gameplay/item_repair_kit.vmdl"
+		"model_level_5"					"models/props_gameplay/item_repair_kit_round.vmdl"
+		"model_level_6"					"models/items/earthshaker/totem_dragon_wall/fissure_body.vmdl"
+		"model_level_7"					"models/items/earthshaker/totem_dragon_wall/fissure_head.vmdl"
+		"model_level_8"					"models/items/earthshaker/ti9_immortal/ti9_immortal_fissure.vmdl"
+		"model_level_9"					"models/props_gameplay/item_repair_kit.vmdl"
+		"model_level_10"				"models/props_gameplay/item_repair_kit_round.vmdl"
+
 		"AbilityValues"
 		{
 			"gold_cost_upgrade"					"5 10 15 20 25 30 35 40 45 50"
