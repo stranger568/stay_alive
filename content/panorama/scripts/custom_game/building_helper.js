@@ -1,7 +1,7 @@
 'use strict';
- 
 
-const GSS = 7; //greed square size x*x
+
+const GSS = 21; //greed square size x*x
 const BS = 3; //size of building
 const MIN_DXY = (GSS - BS) / 2
 const MAX_DXY = MIN_DXY + BS - 1;
@@ -31,8 +31,8 @@ var boundTable = {}; //build bounds table
 var placeBoundTable = {}; //placed buildings bounds table
 var isAllowBuild = false; //safe check_build state
 var state = 'disabled';
+var schedule_id = -1;
 var size = 0;
-var pressedShift = false;
 var particle;
 var buildingBase = [];
 
@@ -42,65 +42,69 @@ const SnapToGrid = (coord) => GCS * (0.5 + Math.floor(coord / GCS))
 
 const StartBuildingHelper = (params) =>
 {
-  if (params.state != "disable")   { initStartBuildingHelper(params);}
-  else	{ EndBuildingHelper();};
-  if (state == STATES.ACTIVE) { activeStartBuildingHelper();};
+	EndBuildingHelper();
+	if (params.state == STATES.ACTIVE)
+	{
+		initStartBuildingHelper(params);
+		activeStartBuildingHelper();
+	}
 }
+
 
 const initStartBuildingHelper = (params) =>
 {
-  UpdateNetTable();
-  var entIndex = params["entIndex"];
-  var MaxScale = params["MaxScale"];
-  var player = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
-  state = params["state"];
-  pressedShift = GameUI.IsShiftDown();
+	UpdateNetTable();
+	var entIndex = params["entIndex"];
+	var MaxScale = params["MaxScale"];
+	var player = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
+	state = params["state"];
 
-  if (particle !== undefined)
-  {
+	if (particle !== undefined)
+	{
 	Particles.DestroyParticleEffect(particle, true);
 	for (var i = 0; i < buildingBase.length; i++)
 	{
-	  Particles.DestroyParticleEffect(buildingBase[i][0], true);
+		Particles.DestroyParticleEffect(buildingBase[i][0], true);
 	}
 	buildingBase = [];
-  }
+	}
 
-  $("#BuildingHelperBase").hittest = true;
+	$("#BuildingHelperBase").hittest = true;
 
-  particle = Particles.CreateParticle("particles/buildinghelper/ghost_model.vpcf", ParticleAttachment_t.PATTACH_ABSORIGIN, player);
-  Particles.SetParticleControlEnt(particle, 1, entIndex, ParticleAttachment_t.PATTACH_ABSORIGIN_FOLLOW, "follow_origin", Entities.GetAbsOrigin(entIndex), true);
-  Particles.SetParticleControl(particle, 4, [ MaxScale, 0, 0 ]);
+	particle = Particles.CreateParticle("particles/buildinghelper/ghost_model.vpcf", ParticleAttachment_t.PATTACH_ABSORIGIN, player);
+	Particles.SetParticleControlEnt(particle, 1, entIndex, ParticleAttachment_t.PATTACH_ABSORIGIN_FOLLOW, "follow_origin", Entities.GetAbsOrigin(entIndex), true);
+	Particles.SetParticleControl(particle, 4, [ MaxScale, 0, 0 ]);
 
 
-  for (var i = 0; i < GSS; i++)
-  {
+	for (var i = 0; i < GSS; i++)
+	{
 	for (var j = 0; j < GSS; j++)
 	{
-	  buildingBase.push([Particles.CreateParticle("particles/buildinghelper/square_sprite3.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, player), i, j]);
-	  Particles.SetParticleControl(buildingBase[buildingBase.length - 1][0], 1, [GCS / 2, 0, 0]);
+		buildingBase.push([Particles.CreateParticle("particles/buildinghelper/square_sprite3.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, player), i, j]);
+		Particles.SetParticleControl(buildingBase[buildingBase.length - 1][0], 1, [GCS / 2, 0, 0]);
 	}
-  }
+	}
 }
 
 const activeStartBuildingHelper = () =>
 {
-  $.Schedule(1/60 , activeStartBuildingHelper);
-  var mPos = GameUI.GetCursorPosition();
-  var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
-  var GamePos2 = GamePos;
-  GamePos[0] = SnapToGrid(GamePos[0]);
-  GamePos[1] = SnapToGrid(GamePos[1]);
 
 
-  // fix for borderless windowed players
-  if (GamePos[0] > 10000000) { GamePos = [0, 0, 0]; }
-  isAllowBuild = true;
-  var left = GamePos[0] - (GSS / 2 - 0.5) * GCS;
-  var top = GamePos[1] - (GSS / 2 - 0.5) * GCS;
-  //клеточки
-  for (var i = 0; i < buildingBase.length; i++)
-  {
+	var mPos = GameUI.GetCursorPosition();
+	var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
+	var GamePos2 = GamePos;
+	GamePos[0] = SnapToGrid(GamePos[0]);
+	GamePos[1] = SnapToGrid(GamePos[1]);
+
+
+	// fix for borderless windowed players
+	if (GamePos[0] > 10000000) { GamePos = [0, 0, 0]; }
+	isAllowBuild = true;
+	var left = GamePos[0] - (GSS / 2 - 0.5) * GCS;
+	var top = GamePos[1] - (GSS / 2 - 0.5) * GCS;
+	//клеточки
+	for (var i = 0; i < buildingBase.length; i++)
+	{
 	var XX = left + buildingBase[i][1] * GCS;
 	var YY = top + buildingBase[i][2] * GCS;
 	var check_cell = IsBuildCell(XX, YY);
@@ -110,9 +114,9 @@ const activeStartBuildingHelper = () =>
 		(buildingBase[i][2] >= MIN_DXY) &&
 		(buildingBase[i][2] <= MAX_DXY))
 	{
-	  isAllowBuild &= (check_cell == StateCell.INZONEALLOW);
-	  switch (check_cell)
-	  {
+		isAllowBuild &= (check_cell == StateCell.INZONEALLOW);
+		switch (check_cell)
+		{
 		case StateCell.INZONEALLOW:
 			check_cell = StateCell.BUILDINGALLOW;
 			break;
@@ -122,59 +126,69 @@ const activeStartBuildingHelper = () =>
 		case StateCell.OUTZONE:
 			check_cell = StateCell.BUILDINGOUTZONE;
 			break;
-	  }
+		}
 	}
-	  Particles.SetParticleControl(buildingBase[i][0], 0, [XX, YY, GamePos[2] + 1]);
-	  Particles.SetParticleControl(buildingBase[i][0], 2, Vec3(check_cell));
-	  Particles.SetParticleControl(buildingBase[i][0], 3, VecAlpha(check_cell));
-	  Particles.SetParticleControl(buildingBase[i][0], 4, GamePos2);
-  }
-  //здание
-  Particles.SetParticleControl(particle, 0, [GamePos[0], GamePos[1], GamePos[2] + 1]);
-  Particles.SetParticleControl(particle, 2, Vec3(isAllowBuild ? StateBuilding.ALLOW : StateBuilding.DENIED));
-  Particles.SetParticleControl(particle, 3, VecAlpha(isAllowBuild ? StateBuilding.ALLOW : StateBuilding.DENIED));
+		Particles.SetParticleControl(buildingBase[i][0], 0, [XX, YY, GamePos[2] + 1]);
+		Particles.SetParticleControl(buildingBase[i][0], 2, Vec3(check_cell));
+		Particles.SetParticleControl(buildingBase[i][0], 3, VecAlpha(check_cell));
+		Particles.SetParticleControl(buildingBase[i][0], 4, GamePos2);
+	}
+	//здание
+	Particles.SetParticleControl(particle, 0, [GamePos[0], GamePos[1], GamePos[2] + 1]);
+	Particles.SetParticleControl(particle, 2, Vec3(isAllowBuild ? StateBuilding.ALLOW : StateBuilding.DENIED));
+	Particles.SetParticleControl(particle, 3, VecAlpha(isAllowBuild ? StateBuilding.ALLOW : StateBuilding.DENIED));
 
-  if (!GameUI.IsShiftDown() && pressedShift) { EndBuildingHelper(); }
+
+	if(state == STATES.ACTIVE)
+	{
+		schedule_id = $.Schedule(1/60 , activeStartBuildingHelper);
+	}
 }
 
 
 
 const EndBuildingHelper = () =>
 {
-  $("#BuildingHelperBase").hittest = false;
-  if (particle !== undefined)
-  {
+	$("#BuildingHelperBase").hittest = false;
+	if (particle !== undefined)
+	{
 	Particles.DestroyParticleEffect(particle, true);
 	for (let i = 0; i < buildingBase.length; i++)
 	{
-	  Particles.DestroyParticleEffect(buildingBase[i][0], true);
+		Particles.DestroyParticleEffect(buildingBase[i][0], true);
 	}
 	buildingBase = [];
-  }
-  state = STATES.DISABLED;
+	}
+	state = STATES.DISABLED;
+	if(schedule_id != -1)
+	{
+		$.CancelScheduled(schedule_id)
+		schedule_id = -1;
+	}
+
 }
 
 
 //right click
 const SendBuildCommand = (params) =>
 {
-  if (isAllowBuild)
-  {
+	if (isAllowBuild)
+	{
 	var mPos = GameUI.GetCursorPosition();
 	var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
+	var pressedShift = GameUI.IsShiftDown();
 	GamePos[0] = SnapToGrid(GamePos[0]);
 	GamePos[1] = SnapToGrid(GamePos[1]);
-	pressedShift = GameUI.IsShiftDown();
 	GameEvents.SendCustomGameEventToServer("building_helper_build_command", { "X": GamePos[0], "Y": GamePos[1], "Z": GamePos[2], "Shift": pressedShift });
 	if (!pressedShift) // Remove the green square unless the player is holding shift
 	{
-	  EndBuildingHelper("ok");
+		EndBuildingHelper("ok");
 	}
-  }
-  else
-  {
-	SendCancelCommand("denied");
-  }
+	}
+	else
+	{
+		SendCancelCommand("denied");
+	}
 }
 
 //left click
