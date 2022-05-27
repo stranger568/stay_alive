@@ -6,7 +6,7 @@
 
 
 
-		"Model"						"models/items/earthshaker/totem_dragon_wall/fissure_body.vmdl"
+		"Model"						"models\wall_1.vmdl"
 		"BuildParticle"				"particles/items5_fx/repair_kit.vpcf"
 		"BuildSound"				"DOTA_Item.RepairKit.Target"
 
@@ -31,6 +31,7 @@
 		"StatusHealth"				"1"
 		"StatusHealthRegen"			"0"
 		"StatusMana"				"100"
+		"RingRadius"				"150"
 		"StatusManaRegen"			"0"
 	}
 
@@ -47,7 +48,7 @@
 		"ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"
 		"ProjectileSpeed"			"750"
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackAcquisitionRange"	"1000"	
+		"AttackAcquisitionRange"	"1000"
 		"AttackRange"				"0"
 
 		"ModelScale"				"1"

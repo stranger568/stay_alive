@@ -47,15 +47,15 @@
 		"AbilityCastRange"				"1000"
 
 		// Оригинальная первая модель берется из npc_units.txt а грейды сюда прописал
-		"model_level_2"					"models/items/earthshaker/totem_dragon_wall/fissure_head.vmdl"
-		"model_level_3"					"models/items/earthshaker/ti9_immortal/ti9_immortal_fissure.vmdl"
-		"model_level_4"					"models/props_gameplay/item_repair_kit.vmdl"
-		"model_level_5"					"models/props_gameplay/item_repair_kit_round.vmdl"
-		"model_level_6"					"models/items/earthshaker/totem_dragon_wall/fissure_body.vmdl"
-		"model_level_7"					"models/items/earthshaker/totem_dragon_wall/fissure_head.vmdl"
-		"model_level_8"					"models/items/earthshaker/ti9_immortal/ti9_immortal_fissure.vmdl"
-		"model_level_9"					"models/props_gameplay/item_repair_kit.vmdl"
-		"model_level_10"				"models/props_gameplay/item_repair_kit_round.vmdl"
+		"model_level_2"					"models\wall_2.vmdl"
+		"model_level_3"					"models\wall_3.vmdl"
+		"model_level_4"					"models\wall_4.vmdl"
+		"model_level_5"					"models\wall_5.vmdl"
+		"model_level_6"					"models\wall_6.vmdl"
+		"model_level_7"					"models\wall_7.vmdl"
+		"model_level_8"					"models\wall_8.vmdl"
+		"model_level_9"					"models\wall_9.vmdl"
+		"model_level_10"				"models\wall_10.vmdl"
 
 		"AbilityValues"
 		{
