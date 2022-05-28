@@ -31,7 +31,7 @@
 		"StatusHealth"				"1"
 		"StatusHealthRegen"			"0"
 		"StatusMana"				"100"
-		"RingRadius"				"150"
+		"RingRadius"				"120"
 		"StatusManaRegen"			"0"
 	}
 

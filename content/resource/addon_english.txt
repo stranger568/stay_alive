@@ -5,6 +5,9 @@
 	{
 		"addon_game_name"			"STAY ALIVE"
 
+		"npc_dota_creature_build_wall"							"wall"
+		"npc_dota_creature_build_defend_tower"					"tower"
+
 		"DOTA_Tooltip_ability_ability_upgrade"					"Улучшение"
 		"DOTA_Tooltip_ability_ability_upgrade_Description"		"Улучшает вашу залупу"
 		// "DOTA_Tooltip_ability_ability_upgrade_"					""
