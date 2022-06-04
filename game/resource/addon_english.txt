@@ -5,6 +5,13 @@
 	{
 		"addon_game_name"			"STAY ALIVE"
 
+		"build_wall"							"Wall"
+		"build_defend_tower"					"Tower"
+		"defend_tower_poison"						"Poison Tower"
+		"defend_tower_rapid"						"Rapid Tower"
+		"defend_tower_stun"						"Stun Tower"
+		"defend_tower_range"						"Range Tower"
+
 		"DOTA_Tooltip_ability_ability_upgrade"					"Улучшение"
 		"DOTA_Tooltip_ability_ability_upgrade_Description"		"Улучшает вашу залупу"
 		// "DOTA_Tooltip_ability_ability_upgrade_"					""
@@ -29,8 +36,5 @@
 		"DOTA_Tooltip_ability_build_defend_tower_Description"		"Строит башню на вашей залупе"
 		// "DOTA_Tooltip_ability_build_defend_tower_"					""
 		// "DOTA_Tooltip_ability_build_defend_tower_"					""
-
-		"npc_dota_creature_build_wall"								"Стена"
-		"npc_dota_creature_build_defend_tower"						"Башня"
 	}
 }

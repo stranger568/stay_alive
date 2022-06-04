@@ -52,6 +52,97 @@ end
 
 ----------------------------------------------------------------------------------------------------
 
+defend_tower_poison = class({})
+
+function defend_tower_poison:Spawn()
+	if not IsServer() then return end
+	self:SetLevel(1)
+end
+
+function defend_tower_poison:OnSpellStart()
+	if not IsServer() then return end
+	local player = self:GetCaster():GetPlayerOwner()
+	local player_id = player:GetPlayerID()
+	local abilKVs = GetAbilityKeyValuesByName(self:GetAbilityName())
+
+	local data = {}
+
+	data.ability = self
+	data.caster = self:GetCaster()
+	data.build_name = abilKVs.UnitName
+	data.callback = build_building_middle
+	data.callback_data = data
+	buildinghelper:Start_Building(data)
+end
+
+defend_tower_rapid = class({})
+
+function defend_tower_rapid:Spawn()
+	if not IsServer() then return end
+	self:SetLevel(1)
+end
+
+function defend_tower_rapid:OnSpellStart()
+	if not IsServer() then return end
+	local player = self:GetCaster():GetPlayerOwner()
+	local player_id = player:GetPlayerID()
+	local abilKVs = GetAbilityKeyValuesByName(self:GetAbilityName())
+
+	local data = {}
+
+	data.ability = self
+	data.caster = self:GetCaster()
+	data.build_name = abilKVs.UnitName
+	data.callback = build_building_middle
+	data.callback_data = data
+	buildinghelper:Start_Building(data)
+end
+
+defend_tower_stun = class({})
+
+function defend_tower_stun:Spawn()
+	if not IsServer() then return end
+	self:SetLevel(1)
+end
+
+function defend_tower_stun:OnSpellStart()
+	if not IsServer() then return end
+	local player = self:GetCaster():GetPlayerOwner()
+	local player_id = player:GetPlayerID()
+	local abilKVs = GetAbilityKeyValuesByName(self:GetAbilityName())
+
+	local data = {}
+
+	data.ability = self
+	data.caster = self:GetCaster()
+	data.build_name = abilKVs.UnitName
+	data.callback = build_building_middle
+	data.callback_data = data
+	buildinghelper:Start_Building(data)
+end
+
+defend_tower_range = class({})
+
+function defend_tower_range:Spawn()
+	if not IsServer() then return end
+	self:SetLevel(1)
+end
+
+function defend_tower_range:OnSpellStart()
+	if not IsServer() then return end
+	local player = self:GetCaster():GetPlayerOwner()
+	local player_id = player:GetPlayerID()
+	local abilKVs = GetAbilityKeyValuesByName(self:GetAbilityName())
+
+	local data = {}
+
+	data.ability = self
+	data.caster = self:GetCaster()
+	data.build_name = abilKVs.UnitName
+	data.callback = build_building_middle
+	data.callback_data = data
+	buildinghelper:Start_Building(data)
+end
 
 
 

@@ -72,4 +72,156 @@
 		"StatusMana"				"100"
 		"StatusManaRegen"			"0"
 	}
+
+	"defend_tower_poison"
+	{
+		"BaseClass"					"npc_dota_creature"
+
+
+
+		"Model"						"models/heroes/enchantress/enchantress.vmdl"
+		"BuildParticle"				"particles/items5_fx/repair_kit.vpcf"
+		"BuildSound"				"DOTA_Item.RepairKit.Target"
+		"AttackRate"				"0.1"
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"
+		"ProjectileSpeed"			"750"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"				"0"
+
+		"ModelScale"				"1"
+		"Level"						"1"
+		"HealthBarOffset"			"140"
+		"HasInventory"				"1"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"0"
+		"ConsideredHero"    		"1"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0.0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"BountyGoldMin"				"0.0"
+		"BountyGoldMax"				"0.0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_BARRACKS"
+		"StatusHealth"				"1"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"100"
+		"StatusManaRegen"			"0"
+	}
+
+	"defend_tower_rapid"
+	{
+		"BaseClass"					"npc_dota_creature"
+
+
+
+		"Model"						"models/heroes/weaver/weaver.vmdl"
+		"BuildParticle"				"particles/items5_fx/repair_kit.vpcf"
+		"BuildSound"				"DOTA_Item.RepairKit.Target"
+		"AttackRate"				"0.2"
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"
+		"ProjectileSpeed"			"1000"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"				"0"
+
+		"ModelScale"				"1"
+		"Level"						"1"
+		"HealthBarOffset"			"140"
+		"HasInventory"				"1"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"0"
+		"ConsideredHero"    		"1"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0.0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"BountyGoldMin"				"0.0"
+		"BountyGoldMax"				"0.0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_BARRACKS"
+		"StatusHealth"				"1"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"100"
+		"StatusManaRegen"			"0"
+	}
+
+	"defend_tower_stun"
+	{
+		"BaseClass"					"npc_dota_creature"
+
+
+
+		"Model"						"models/heroes/omniknight/omniknight.vmdl"
+		"BuildParticle"				"particles/items5_fx/repair_kit.vpcf"
+		"BuildSound"				"DOTA_Item.RepairKit.Target"
+		"AttackRate"				"1.0"
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"
+		"ProjectileSpeed"			"750"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"				"0"
+
+		"ModelScale"				"1"
+		"Level"						"1"
+		"HealthBarOffset"			"140"
+		"HasInventory"				"1"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"0"
+		"ConsideredHero"    		"1"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0.0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"BountyGoldMin"				"0.0"
+		"BountyGoldMax"				"0.0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_BARRACKS"
+		"StatusHealth"				"1"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"100"
+		"StatusManaRegen"			"0"
+	}
+
+	"defend_tower_range"
+	{
+		"BaseClass"					"npc_dota_creature"
+
+
+
+		"Model"						"models/heroes/sniper/sniper.vmdl"
+		"BuildParticle"				"particles/items5_fx/repair_kit.vpcf"
+		"BuildSound"				"DOTA_Item.RepairKit.Target"
+		"AttackRate"				"2.0"
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"
+		"ProjectileSpeed"			"1400"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"				"0"
+
+		"ModelScale"				"1"
+		"Level"						"1"
+		"HealthBarOffset"			"140"
+		"HasInventory"				"1"
+		"MinimapIcon"				""
+		"MinimapIconSize"			"0"
+		"ConsideredHero"    		"1"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0.0"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"BountyGoldMin"				"0.0"
+		"BountyGoldMax"				"0.0"
+		"BoundsHullName"			"DOTA_HULL_SIZE_BARRACKS"
+		"StatusHealth"				"1"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"100"
+		"StatusManaRegen"			"0"
+	}
 }
