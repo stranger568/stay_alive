@@ -209,6 +209,13 @@ function CreateBuildingBuild(argv, data)
 	unit:AddNewModifier(unit, nil, "modifier_build_buildingtime", {duration = abilKVs.BuildingTime})
 	unit:AddNewModifier(unit, nil, "modifier_build_disable_turning", {})
 
+	unit.build_information = WorldPanels:CreateWorldPanelForTeam(2, {
+        layout = "file://{resources}/layout/custom_game/world_panels/build_information.xml",
+        entity = unit,
+        entityHeight = 255,
+        data = {id_owner = argv.PlayerID}
+    })
+
 	local timer_build = 0
 
 

@@ -1,0 +1,88 @@
+.BuildInformation
+{
+	flow-children: down;
+	width: 200px;
+}
+
+.AvatarOwner
+{
+	width: 25px;
+	height: 25px;
+	horizontal-align: center;
+	margin-bottom: 5px;
+}
+
+.HealthBar
+{
+    width: 120px;
+    height: 10px;
+    horizontal-align: center;
+	border: 1px solid black;
+    margin-bottom: 1px;
+}
+
+.HealthPanelBackground
+{
+    width: 100%;
+    height: 20px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #17200d ), color-stop( 0.2, #222e13 ), color-stop( .5, #1e2911), to( #17200d) );
+}
+
+.HealthPanelBackgroundGreen
+{
+    width: 0%;
+    height: 20px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #425d25 ), color-stop( 0.2, #5BA539 ), color-stop( .5, #4D9030), to( #425d25) );
+    transition-property: width;
+    transition-duration: 0.1s;
+}
+
+.BuildingProgressImage
+{
+    background-image: url("file://{images}/custom_game/building_information/build_progress.png");
+    background-size: 100%;
+    width: 14px;
+    height: 19px;
+    margin-left: 4px;
+    img-shadow: 0px 0px 4px 5.0 #333333b0;
+}
+
+
+
+
+
+
+
+
+.BuildingBar
+{
+    width: 160px;
+    height: 20px;
+    horizontal-align: center;
+}
+
+.BuildingBarLines
+{
+    width: 120px;
+    height: 7px;
+    horizontal-align: center;
+    border: 1px solid black;
+    margin-bottom: 1px;
+    margin-top: 10px;
+}
+
+.BuildingBarPanelBackground
+{
+    width: 100%;
+    height: 20px;
+    background-color: black;
+}
+
+.BuildingBarPanelBackgroundGreen
+{
+    width: 100%;
+    height: 20px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( rgba(63, 176, 75, 1) ), to( rgba(48, 91, 41, 1) ) );
+    transition-property: width;
+    transition-duration: 0.1s;
+}

@@ -1,0 +1,31 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/custom_game/world_panels/build_information.vcss_c" />
+	</styles>
+	<scripts>
+		<include src="s2r://panorama/scripts/custom_game/world_panels/build_information.vjs_c" />
+	</scripts>
+	<Panel hittest="false" class="BuildInformation">
+		<DOTAAvatarImage id="AvatarOwner" class="AvatarOwner" steamid="local"/>
+
+
+
+		<Panel id="BuildingBar" class="BuildingBar">
+			<Panel class="BuildingProgressImage" />
+			<Panel id="BuildingBarLines" class="BuildingBarLines">
+				<Panel id="BuildingBar" class="BuildingBar">
+					<Panel id="BuildingBarPanelBackground" class="BuildingBarPanelBackground"/>
+					<Panel id="BuildingBarPanelBackgroundGreen" class="BuildingBarPanelBackgroundGreen"/>
+				</Panel>
+			</Panel>
+		</Panel>
+
+
+
+		<Panel id="HealthBar" class="HealthBar">
+			<Panel id="HealthPanelBackground" class="HealthPanelBackground"/>
+			<Panel id="HealthPanelBackgroundGreen" class="HealthPanelBackgroundGreen"/>
+		</Panel>
+	</Panel>
+</root>

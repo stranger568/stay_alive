@@ -12,6 +12,12 @@ function modifier_build_disable_turning:DeclareFunctions()
 	return funcs
 end
 
+function modifier_build_disable_turning:CheckState()
+	return {
+		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
+	}
+end
+
 function modifier_build_disable_turning:GetModifierDisableTurning()
 	return 0
 end

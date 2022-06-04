@@ -1,4 +1,8 @@
 <root>
+	<scripts>
+      	<include src="s2r://panorama/scripts/custom_game/world_panels/playertables_base.vjs_c" />
+      	<include src="s2r://panorama/scripts/custom_game/world_panels/function.vjs_c" />
+    </scripts>
 	<script>
 		GameEvents.Subscribe("CreateIngameErrorMessage", function(data) 
 		{
@@ -12,5 +16,6 @@
 	</script>
 	<Panel>
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/building_helper.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/world_panels/barebones_worldpanels.xml" />
 	</Panel>
 </root>

@@ -1,3 +1,5 @@
+LinkLuaModifier( "modifier_build_disable_turning", "modifiers/builds/modifier_build_disable_turning", LUA_MODIFIER_MOTION_NONE )
+
 if (_G.buildinghelper) == nil then
 	_G.buildinghelper = class({})
 end
@@ -8,7 +10,43 @@ function buildinghelper:InitBuildingHelper()
 	CustomGameEventManager:RegisterListener( "building_helper_cancel_command", Dynamic_Wrap(buildinghelper, "cancel_command"))
 end
 
+------------------------------------------------------
+--Спавн начальных стенок
+------------------------------------------------------
 
+function buildinghelper:SpawnCenterWalls()
+	for i=0,7 do
+		local spawn_point = Entities:FindByName(nil, "spawn_wall_player_"..i)
+		if spawn_point then
+			local wall = CreateUnitByName("build_wall", GetGroundPosition(spawn_point:GetAbsOrigin(), nil), false, nil, nil, 2)
+			wall:AddAbility("ability_upgrade")
+			local build_info = wall:AddAbility("build_wall")
+			if build_info then
+				build_info:SetHidden(true)
+			end
+			if PlayerInfo.PLAYERS[i] then
+				buildinghelper:RegisterBuildingCenter(wall, 2, GetGroundPosition(spawn_point:GetAbsOrigin(), nil), PlayerResource:GetSelectedHeroEntity(i) , i)
+				print("Есть игрок "..i)
+				wall.center_information = WorldPanels:CreateWorldPanelForTeam(2, {
+		            layout = "file://{resources}/layout/custom_game/world_panels/build_information.xml",
+		            entity = wall,
+		            entityHeight = 255,
+		            data = {id_owner = i}
+		        })
+			else
+				buildinghelper:RegisterBuildingCenter(wall, 2, GetGroundPosition(spawn_point:GetAbsOrigin(), nil), PlayerResource:GetSelectedHeroEntity(i) , i)
+				print("Нет игрока "..i)
+				wall.center_information = WorldPanels:CreateWorldPanelForTeam(2, {
+		            layout = "file://{resources}/layout/custom_game/world_panels/build_information.xml",
+		            entity = wall,
+		            entityHeight = 255,
+		            data = {}
+		        })
+			end
+			wall:AddNewModifier(wall, nil, "modifier_build_disable_turning", {})
+		end
+	end
+end
 
 ------------------------------------------------------
 --создаём дамп здания передаём эвент в панораму
@@ -78,8 +116,14 @@ end
 ------------------------------------------------------
 
 function buildinghelper:RegisterBuilding(unit,team,location,hero,playerID)
-	unit:SetOwner(hero)
-	unit:SetControllableByPlayer(playerID, true)
+	if hero and hero ~= nil then
+		unit:SetOwner(hero)
+	end
+
+	if playerID and playerID ~= nil then
+		unit:SetControllableByPlayer(playerID, true)
+	end
+
 	unit.DestroyBuilding = buildinghelper.DestroyBuilding
 
 	local bounds = {}
@@ -91,6 +135,41 @@ function buildinghelper:RegisterBuilding(unit,team,location,hero,playerID)
 	}
 	unit:SetSize(bounds.Mins,bounds.Maxs)
 	unit:SetHullRadius(64*1.3)
+
+	bounds.Mins = bounds.Mins + location
+	bounds.Maxs = bounds.Maxs + location
+	local c = {Xmin = bounds["Mins"][1],Ymin = bounds["Mins"][2],Xmax = bounds["Maxs"][1],Ymax = bounds["Maxs"][2], EntId = unit:GetEntityIndex()}
+
+	local nettable = CustomNetTables:GetTableValue("stay_alive_buildingzone", "stay_alive_buildingzone_buildings")
+	nettable.length = nettable.length + 1
+	nettable[nettable.length] = c
+	CustomNetTables:SetTableValue("stay_alive_buildingzone", "stay_alive_buildingzone_buildings", nettable)
+end
+
+------------------------------------------------------
+-- Регистрация стенок в центре
+------------------------------------------------------
+
+function buildinghelper:RegisterBuildingCenter(unit,team,location,hero,playerID)
+	if hero and hero ~= nil then
+		unit:SetOwner(hero)
+	end
+
+	if playerID and playerID ~= nil then
+		unit:SetControllableByPlayer(playerID, true)
+	end
+
+	unit.DestroyBuilding = buildinghelper.DestroyBuilding
+
+	local bounds = {}
+	bounds = unit:GetBounds()
+	bounds =
+	{
+		Mins = Vector(-128 - 1, -128 - 1, bounds.Mins.z),
+		Maxs = Vector(128 + 1, 128 + 1, bounds.Maxs.z)
+	}
+	unit:SetSize(bounds.Mins,bounds.Maxs)
+	unit:SetHullRadius(128*1.3)
 
 	bounds.Mins = bounds.Mins + location
 	bounds.Maxs = bounds.Maxs + location

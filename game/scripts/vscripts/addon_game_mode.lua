@@ -2,9 +2,12 @@ if StayAliveMode == nil then
 	StayAliveMode = class({})
 end
 
+require("player_info")
 require("util")
 require("lib/timers")
 require("lib/buildinghelper")
+require( "panorama/playertables" )
+require( "panorama/worldpanels" )
 
 LinkLuaModifier( "modifier_repair_order", "functions/repair.lua", LUA_MODIFIER_MOTION_NONE )
 
@@ -25,6 +28,16 @@ function StayAliveMode:InitGameMode()
 	ListenToGameEvent( "npc_spawned", Dynamic_Wrap( self, "OnNPCSpawned" ), self )
 	GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( self, "ExecuteOrderFilter" ), self )
 	ListenToGameEvent( "entity_killed", Dynamic_Wrap( self, "OnEntityKilled"), self)
+	ListenToGameEvent('player_connect_full', Dynamic_Wrap(self, 'OnConnectFull'), self)
+	ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( self, 'OnGameRulesStateChange' ), self )
+end
+
+function StayAliveMode:OnConnectFull(data)
+	local player_index = EntIndexToHScript( data.index )
+	if player_index == nil then
+		return
+	end
+	PlayerInfo:RegisterPlayerInfo(data.PlayerID)
 end
 
 function StayAliveMode:OnNPCSpawned( event )
@@ -36,7 +49,18 @@ end
 
 function StayAliveMode:OnEntityKilled(keys)
 	local ent = EntIndexToHScript(keys.entindex_killed)
+
+	self.pfx = ParticleManager:CreateParticle("particles/overlord_anime/overlord_screen_white.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+	
 	if (ent.DestroyBuilding ~= nil) then ent:DestroyBuilding(keys.entindex_killed) end
+end
+
+function StayAliveMode:OnGameRulesStateChange(params)
+	local nNewState = GameRules:State_Get()
+
+	if nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+		buildinghelper:SpawnCenterWalls()
+	end
 end
 
 function StayAliveMode:ExecuteOrderFilter( filterTable )
